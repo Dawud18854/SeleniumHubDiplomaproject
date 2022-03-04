@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,40 +18,72 @@ namespace SeleniumUITest
 {
     
 
-    public class LocalhostNUnitLoadTest
+    public class LocalLoadTests
     {
-        public IWebDriver Driver { get; set; }
+        public IWebDriver driver;
 
-        [SetUp]
-        public void SetUp()
+        
+        public IWebDriver Init()
         {
             new DriverManager().SetUpDriver(new EdgeConfig());
 
-            Driver = new EdgeDriver();
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            Driver.Quit();
-            Driver.Dispose();
+            return new EdgeDriver();
         }
 
 
-        [Test]
-        public void CreateRandomRolesTest()
+        [Test, Order(1)]
+        public void AdminLoginTest()
         {
-            var driver = Driver;
+            driver = Init();
+
+            driver.Navigate().GoToUrl("https://localhost:44365");
+
+            System.Threading.Thread.Sleep(2000);
+
+            IWebElement usernameInput = driver.FindElement(By.Name("username"));
+            usernameInput.SendKeys("admin");
+
+            System.Threading.Thread.Sleep(2000);
+
+            IWebElement passwordInput = driver.FindElement(By.Name("password"));
+            passwordInput.SendKeys("abcdefg");
+
+            System.Threading.Thread.Sleep(2000);
+
+            IWebElement submitLogin = driver.FindElement(By.XPath(".//*[@id='loginSubmit']"));
+            submitLogin.Click();
+
+        }
+
+        [Test, Order(2)]
+        public void ExecutiveLoginTest() // Variant through SeleniumIDE instead of manually writing code
+        {
+
+            driver = Init();
 
             driver.Navigate().GoToUrl("https://localhost:44365/login");
-            System.Threading.Thread.Sleep(2000);
             driver.Manage().Window.Size = new System.Drawing.Size(1440, 780);
             driver.FindElement(By.Name("username")).Click();
             driver.FindElement(By.Name("username")).SendKeys("Auto Loan Account@acp.at");
             driver.FindElement(By.Name("password")).Click();
             driver.FindElement(By.Name("password")).SendKeys("eweee");
             driver.FindElement(By.CssSelector(".btn")).Click();
-            System.Threading.Thread.Sleep(2000);
+
+        }
+
+        [Test, Order(3)]
+        public void CreateRoleWithExecutiveTest()
+        {
+            //init
+            driver = Init();
+
+            driver.Navigate().GoToUrl("https://localhost:44365/login");
+            driver.Manage().Window.Size = new System.Drawing.Size(1440, 780);
+            driver.FindElement(By.Name("username")).Click();
+            driver.FindElement(By.Name("username")).SendKeys("Auto Loan Account@acp.at");
+            driver.FindElement(By.Name("password")).Click();
+            driver.FindElement(By.Name("password")).SendKeys("eweee");
+            driver.FindElement(By.CssSelector(".btn")).Click();
             driver.FindElement(By.LinkText("bearbeiten")).Click();
             driver.FindElement(By.Id("buttonviewroles")).Click();
             driver.FindElement(By.Id("createrole")).Click();
@@ -63,11 +95,6 @@ namespace SeleniumUITest
             driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
             driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
             driver.FindElement(By.Name("checkboxcustom")).Click();
-            driver.FindElement(By.Id("RoleName")).Click();
-            driver.FindElement(By.Id("RoleName")).SendKeys("asdasd");
-            driver.FindElement(By.Id("Description")).Click();
-            driver.FindElement(By.Id("Description")).SendKeys("asdasd");
-            driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
             {
                 var element = driver.FindElement(By.LinkText("Applikation hinzufügen"));
                 Actions builder = new Actions(driver);
@@ -80,44 +107,18 @@ namespace SeleniumUITest
             }
             driver.FindElement(By.Name("checkboxadmin")).Click();
             driver.FindElement(By.Name("checkboxedit")).Click();
-            driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
-            driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
             {
                 var element = driver.FindElement(By.LinkText("Applikation hinzufügen"));
                 Actions builder = new Actions(driver);
                 builder.DoubleClick(element).Perform();
             }
-            driver.FindElement(By.XPath("(//input[@name=\'checkboxedit\'])[2]")).Click();
-            driver.FindElement(By.Id("RoleName")).Click();
-            driver.FindElement(By.Id("RoleName")).SendKeys("aaaabbbb");
-            driver.FindElement(By.Id("Description")).Click();
-            driver.FindElement(By.Id("Description")).SendKeys("asdasdas");
-            driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
-            {
-                var element = driver.FindElement(By.LinkText("Applikation hinzufügen"));
-                Actions builder = new Actions(driver);
-                builder.MoveToElement(element).Perform();
-            }
-            driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
-            {
-                var element = driver.FindElement(By.LinkText("Applikation hinzufügen"));
-                Actions builder = new Actions(driver);
-                builder.DoubleClick(element).Perform();
-            }
-            driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
-            driver.FindElement(By.LinkText("Applikation hinzufügen")).Click();
-            {
-                var element = driver.FindElement(By.TagName("body"));
-                Actions builder = new Actions(driver);
-                builder.MoveToElement(element, 0, 0).Perform();
-            }
-            driver.FindElement(By.XPath("(//input[@name=\'checkboxcustom\'])[3]")).Click();
-            driver.FindElement(By.Id("RoleName")).Click();
-            driver.FindElement(By.Id("RoleName")).SendKeys("ewerwre");
-            driver.FindElement(By.Id("Description")).Click();
-            driver.FindElement(By.Id("Description")).SendKeys("werwer");
+
             driver.FindElement(By.Id("createRoleSubmit")).Click();
+
         }
+
+
+        
     }
 }
-*/
+
