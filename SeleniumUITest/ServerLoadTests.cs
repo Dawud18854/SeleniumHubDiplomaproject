@@ -24,40 +24,37 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumUITest
 {
-    public class Tests
+    public class ServerLoadTests
     {
         private IWebDriver driver;
         string hubUrl;
-        //public IDictionary<string, object> vars { get; private set; }
-        //private IJavaScriptExecutor js;
+        public IDictionary<string, object> vars { get; private set; }
+        private IJavaScriptExecutor js;
  
         [SetUp]
         public void Setup()
         {
-            //vars = new Dictionary<string, object>();
+            vars = new Dictionary<string, object>();
  
             hubUrl = "http://localhost:4444/wd/hub";
-            //driver = LocalDriverFactory.CreateInstance(BrowserType.Firefox, hubUrl);
-
-
-
+            driver = LocalDriverFactory.CreateInstance(BrowserType.Firefox, hubUrl);
 
             /*EdgeOptions edgeOptions = new EdgeOptions();
             driver = new RemoteWebDriver(new Uri(hubUrl),
                 edgeOptions.ToCapabilities(),
-                new TimeSpan(0, 0, 15));*/
+                new TimeSpan(0, 0, 15));
 
-            /*OperaOptions operaOptions = new OperaOptions();
+            OperaOptions operaOptions = new OperaOptions();
             driver = new RemoteWebDriver(new Uri(hubUrl),
                                          operaOptions.ToCapabilities(),
-                           new TimeSpan(0, 3, 0));*/
+                           new TimeSpan(0, 3, 0));
 
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             driver = new RemoteWebDriver(new Uri(hubUrl),
                                          firefoxOptions.ToCapabilities(),
-                           new TimeSpan(0, 0, 15));
+                           new TimeSpan(0, 0, 15));*/
 
-            //js = (IJavaScriptExecutor)driver;
+            js = (IJavaScriptExecutor)driver;
         }
 
         [TearDown]
@@ -66,17 +63,10 @@ namespace SeleniumUITest
             driver.Quit();
         }
  
-        [Test]
-        [Parallelizable]
-        public void OpenGoogleAndSearch()
-        {
-            driver.Navigate().GoToUrl("https://www.google.com");
-
-        }
  
         [Test]
         [Parallelizable]
-        public void OpenBingAndSearch()
+        public void OpenBingAndSearch() //ForTestingPurpose, if this fails then the Nodes are not up and running
         {
             driver.Navigate().GoToUrl("https://www.bing.com/");
             driver.Manage().Window.Maximize();
@@ -88,22 +78,52 @@ namespace SeleniumUITest
         public void AdminLoginTest()
         {
 
+            driver.Navigate().GoToUrl("https://localhost:44365");
 
-            //Creating new driver because localProjects only work with local Drivers
+            System.Threading.Thread.Sleep(2000);
 
-            new DriverManager().SetUpDriver(new EdgeConfig());
+            IWebElement usernameInput = driver.FindElement(By.Name("username"));
+            usernameInput.SendKeys("admin");
 
-            IWebDriver driver = new EdgeDriver();
+            System.Threading.Thread.Sleep(2000);
+
+            IWebElement passwordInput = driver.FindElement(By.Name("password"));
+            passwordInput.SendKeys("abcdefg");
+
+            System.Threading.Thread.Sleep(2000);
+
+            IWebElement submitLogin = driver.FindElement(By.XPath(".//*[@id='loginSubmit']"));
+            submitLogin.Click();
+
+        }
+
+        [Test]
+        [Parallelizable]
+        public void ExecutiveLoginTest() // Variant through SeleniumIDE instead of manually writing code
+        {
 
             driver.Navigate().GoToUrl("https://localhost:44365/login");
-            System.Threading.Thread.Sleep(2000);
             driver.Manage().Window.Size = new System.Drawing.Size(1440, 780);
             driver.FindElement(By.Name("username")).Click();
             driver.FindElement(By.Name("username")).SendKeys("Auto Loan Account@acp.at");
             driver.FindElement(By.Name("password")).Click();
             driver.FindElement(By.Name("password")).SendKeys("eweee");
             driver.FindElement(By.CssSelector(".btn")).Click();
-            System.Threading.Thread.Sleep(2000);
+
+        }
+
+        [Test]
+        [Parallelizable]
+        public void CreateRoleWithExecutiveTest()
+        {
+
+            driver.Navigate().GoToUrl("https://localhost:44365/login");
+            driver.Manage().Window.Size = new System.Drawing.Size(1440, 780);
+            driver.FindElement(By.Name("username")).Click();
+            driver.FindElement(By.Name("username")).SendKeys("Auto Loan Account@acp.at");
+            driver.FindElement(By.Name("password")).Click();
+            driver.FindElement(By.Name("password")).SendKeys("eweee");
+            driver.FindElement(By.CssSelector(".btn")).Click();
             driver.FindElement(By.LinkText("bearbeiten")).Click();
             driver.FindElement(By.Id("buttonviewroles")).Click();
             driver.FindElement(By.Id("createrole")).Click();
@@ -139,30 +159,8 @@ namespace SeleniumUITest
                 Actions builder = new Actions(driver);
                 builder.DoubleClick(element).Perform();
             }
-            
+
             driver.FindElement(By.Id("createRoleSubmit")).Click();
-
-
-
-
-            driver.Navigate().GoToUrl("https://localhost:44365");
-
-            System.Threading.Thread.Sleep(2000);
-
-            IWebElement usernameInput = driver.FindElement(By.Name("username"));
-            usernameInput.SendKeys("admin");
-
-            System.Threading.Thread.Sleep(2000);
-
-            IWebElement passwordInput = driver.FindElement(By.Name("password"));
-            passwordInput.SendKeys("abcdefg");
-
-            System.Threading.Thread.Sleep(2000);
-
-            //IWebElement submitLogin = driver.FindElement(By.Id(".//*[@id='loginSubmit']"));
-            IWebElement submitLogin = driver.FindElement(By.XPath(".//*[@id='loginSubmit']"));
-            submitLogin.Click();
-
 
         }
     }
