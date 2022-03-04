@@ -3264,11 +3264,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj",
+      "projectUniqueName": "C:\\Users\\Dawud\\source\\repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj",
       "projectName": "SeleniumUITest",
-      "projectPath": "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj",
+      "projectPath": "C:\\Users\\Dawud\\source\\repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj",
       "packagesPath": "C:\\Users\\Dawud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\obj\\",
+      "outputPath": "C:\\Users\\Dawud\\source\\repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dawud\\AppData\\Roaming\\NuGet\\NuGet.Config",
