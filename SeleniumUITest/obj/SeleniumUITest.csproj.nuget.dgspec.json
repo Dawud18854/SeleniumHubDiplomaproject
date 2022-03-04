@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dawud/RiderProjects/SeleniumUITest/SeleniumUITest/SeleniumUITest.csproj": {}
+    "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj": {}
   },
   "projects": {
-    "/Users/dawud/RiderProjects/SeleniumUITest/SeleniumUITest/SeleniumUITest.csproj": {
+    "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dawud/RiderProjects/SeleniumUITest/SeleniumUITest/SeleniumUITest.csproj",
+        "projectUniqueName": "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj",
         "projectName": "SeleniumUITest",
-        "projectPath": "/Users/dawud/RiderProjects/SeleniumUITest/SeleniumUITest/SeleniumUITest.csproj",
-        "packagesPath": "/Users/dawud/.nuget/packages/",
-        "outputPath": "/Users/dawud/RiderProjects/SeleniumUITest/SeleniumUITest/obj/",
+        "projectPath": "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\SeleniumUITest.csproj",
+        "packagesPath": "C:\\Users\\Dawud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dawud\\Source\\Repos\\Dawud18854\\SeleniumHubDiplomaproject\\SeleniumUITest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/dawud/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Dawud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -66,6 +68,10 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "WebDriverManager": {
+              "target": "Package",
+              "version": "[2.12.3, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -86,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
