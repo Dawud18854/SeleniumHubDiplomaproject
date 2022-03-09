@@ -64,7 +64,7 @@ namespace SeleniumUITest
             driver.Navigate().GoToUrl("https://localhost:44365/login");
             driver.Manage().Window.Size = new System.Drawing.Size(1440, 780);
             driver.FindElement(By.Name("username")).Click();
-            driver.FindElement(By.Name("username")).SendKeys("Auto Loan Account@acp.at");
+            driver.FindElement(By.Name("username")).SendKeys("withdrawal@acp.at");
             driver.FindElement(By.Name("password")).Click();
             driver.FindElement(By.Name("password")).SendKeys("eweee");
             driver.FindElement(By.CssSelector(".btn")).Click();
@@ -80,7 +80,7 @@ namespace SeleniumUITest
             driver.Navigate().GoToUrl("https://localhost:44365/login");
             driver.Manage().Window.Size = new System.Drawing.Size(1440, 780);
             driver.FindElement(By.Name("username")).Click();
-            driver.FindElement(By.Name("username")).SendKeys("Auto Loan Account@acp.at");
+            driver.FindElement(By.Name("username")).SendKeys("withdrawal@acp.at");
             driver.FindElement(By.Name("password")).Click();
             driver.FindElement(By.Name("password")).SendKeys("eweee");
             driver.FindElement(By.CssSelector(".btn")).Click();
@@ -117,6 +117,7 @@ namespace SeleniumUITest
 
         }
 
+        
 
         
     }

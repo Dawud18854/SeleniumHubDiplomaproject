@@ -5,7 +5,8 @@ namespace SeleniumUITest
         Chrome,
         Edge,
         Firefox,
-        Opera
+        Opera,
+        Safari
     }
 }
 
